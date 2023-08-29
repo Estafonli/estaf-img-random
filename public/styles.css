@@ -1,0 +1,57 @@
+/* Responsive grid gallery with different sizes */
+
+body {
+    background-color: rgb(35, 35, 35);
+}
+
+#menu-img{
+    background-color: rgb(35, 35, 35);
+    display: inline-flex;
+    margin: 0em 0 1em;
+    width: 97.5%;
+    border: 2px solid #eee;
+    align-items: center;
+    justify-content: center;
+}
+
+#menu-img a{
+    margin: 0.5em;
+    padding: 1em;
+    background-color: rgb(40, 40, 40);
+    font-size: 1em;
+    text-decoration: none;
+    border: 2px solid #eee;
+    color: #eee;
+}
+
+
+
+#img-container {
+    column-count: 4;
+    column-gap: 1em;
+}
+
+#award-card__wrapper {
+    background-color: #eee;
+    display: inline-block;
+    margin: 0 0 1em;
+    width: 90%;
+    border: 1px solid white;
+}
+
+@media only screen and (max-width: 480px) {
+    #img-container {
+        column-count: 3;
+        column-gap: 1em;
+    }
+
+    #menu-img a{
+        margin: 0.25em;
+        padding: 0.5em;
+        background-color: rgb(40, 40, 40);
+        font-size: 0.5em;
+        text-decoration: none;
+        border: 2px solid #eee;
+        color: #eee;
+    }
+}

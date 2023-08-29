@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Page Title</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="./styles.css">
+<link rel="icon" type="image/x-icon" href="icon.ico">
+<body>
+
+<div id="menu-img">
+    <a href="/">Normales</a>
+    <a href="/Anime">Anime</a>
+    <a href="/Esqueletos">Esqueletos</a>
+    <a href="/LoL">LoL</a>
+    <a href="/MLP">MLP</a>
+    <a href="/YuGiOh">YuGiOh</a>
+</div>
+
+<!--
+<div id="img-container">
+	<img data-src="./imagenes/" alt="" class="imagenes" id="award-card__wrapper" >
+</div>
+-->
+
+
+<% for(var i = 0; i < imagenes.length; i+=20){ %>
+	<div id="img-container" class="img-container">
+		
+	</div>
+<% } %>
+
+
+<script src="script.js"></script>
+<!--
+<script>
+
+var imagesContainer = document.getElementsByClassName("imagenes");
+var index = 0;
+var images = [];
+
+<% for(var i = 0; i < imagenes.length; i++){ %>
+	images.push("<%= imagenes[i] %>");
+<% } %>
+
+//console.log("Imagenes:" + images)
+console.log(imagesContainer);
+
+for(let i = 0; i < 20; i++ ){
+	imagesContainer[i].src = imagesContainer[i].dataset.src;
+}
+
+setInterval(() => {
+	// Obtener el final de la pagina
+	if(window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight)
+	{
+		//console.log(true);
+		index += 20;
+		for(let i = 0; i < 20; i++){
+			imagesContainer[index + i].src = imagesContainer[index + i].dataset.src;
+		}
+	}
+}, 1000)
+
+</script>
+-->
+<script>
+var container = document.getElementsByClassName("img-container");
+var indexContainer = 0;
+
+var imagesContainer = document.getElementsByClassName("imagenes");
+var index = 0;
+
+var images = [];
+
+<% for(var i = 0; i < imagenes.length; i++){ %>
+	images.push("<%= imagenes[i] %>");
+<% } %>
+
+for(let i = 0; i < 20; i++){
+	if(images[index+i] != null){
+		container[0].innerHTML += "<img src='./imagenes/"+images[i]+"' alt='' class='imagenes' id='award-card__wrapper'>"
+	}
+}
+index += 20;
+indexContainer += 1;
+
+setInterval(() => {
+
+	
+
+	if(document.documentElement.clientHeight == document.documentElement.scrollHeight) return;
+
+	// Verdadero si es un dispositivo mobil
+	if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+		if(document.documentElement.clientHeight + window.pageYOffset + (30 * 2) + 0 >= document.documentElement.scrollHeight){
+			//console.log(true);
+			for(let i = 0; i < 20; i++){
+				if(images[index+i] != null){
+					container[indexContainer].innerHTML += "<img src='./imagenes/"+images[index+i]+"' alt='' class='imagenes' id='award-card__wrapper'>"
+				}
+			}
+			
+			if(indexContainer < container.length){
+				index += 20;
+				indexContainer += 1;
+			}
+		}
+	  
+	}
+	else {
+		// Obtener el final de la pagina en PC
+		if(window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight)
+		{
+			//console.log(true);
+			for(let i = 0; i < 20; i++){
+				if(images[index+i] != null){
+					container[indexContainer].innerHTML += "<img src='./imagenes/"+images[index+i]+"' alt='' class='imagenes' id='award-card__wrapper'>"
+				}
+			}
+			
+			if(indexContainer < container.length){
+				index += 20;
+				indexContainer += 1;
+			}
+		}
+	}
+}, 1000 )
+
+</script>
+</body>
+</html> 
